@@ -1,0 +1,39 @@
+<h1>User Registration</h1>
+<div class="registration-container">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" required>
+    <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+      Name is required.
+    </div>
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" required>
+    <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+      Valid email is required.
+    </div>
+
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" required>
+    <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+      Password is required.
+    </div>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" type="tel" formControlName="phoneNumber" required>
+    <div *ngIf="registrationForm.get('phoneNumber')?.invalid && registrationForm.get('phoneNumber')?.touched">
+      Phone number is required.
+    </div>
+
+    <label for="address">Address:</label>
+    <textarea id="address" formControlName="address" required></textarea>
+    <div *ngIf="registrationForm.get('address')?.invalid && registrationForm.get('address')?.touched">
+      Address is required.
+    </div>
+
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+  <div *ngIf="registrationSuccess" class="success-message">
+    Registration successful! Redirecting to login...
+  </div>
+</div>

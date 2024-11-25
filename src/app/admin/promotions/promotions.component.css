@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light background for a clean look */
+    margin: 0;
+    padding: 20px;
+    color: #343a40; /* Dark text for readability */
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #007bff; /* Primary color */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Form Styles */
+form {
+    background: #ffffff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+form:hover {
+    transform: scale(1.02); /* Slight scale on hover */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #495057; /* Darker text for labels */
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #007bff; /* Focus border color */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+.error {
+    color: #dc3545; /* Red for errors */
+    font-size: 0.9em;
+}
+
+/* Button Styles */
+button {
+    background-color: #007bff; /* Primary button color */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+button:disabled {
+    background-color: #ccc; /* Disabled state */
+}
+
+/* Promotion List Styles */
+h2 {
+    margin-top: 30px;
+    font-size: 1.8em;
+    color: #007bff; /* Primary color for subheadings */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff; /* White background for list items */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: scale(1.02); /* Slight scale on hover */
+}
+
+strong {
+    display: block;
+    font-size: 1.2em;
+    color: #343a40; /* Darker color for strong text */
+}
+
+small {
+    color: #6c757d; /* Lighter color for smaller text */
+}
+
+/* Button Styles in the List */
+li button {
+    margin-right: 10px;
+    background-color: #dc3545; /* Danger color for delete */
+}
+
+li button:hover {
+    background-color: #c82333; /* Darker on hover */
+}

@@ -1,0 +1,36 @@
+<h1>Mover Route Optimization</h1>
+<form [formGroup]="routeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="pickupLocation">Pickup Location:</label>
+    <input id="pickupLocation" formControlName="pickupLocation" required>
+    <div *ngIf="routeForm.get('pickupLocation')?.invalid && (routeForm.get('pickupLocation')?.dirty || routeForm.get('pickupLocation')?.touched)" class="error">
+      <small *ngIf="routeForm.get('pickupLocation')?.errors?.['required']">Pickup location is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="dropoffLocation">Drop-off Location:</label>
+    <input id="dropoffLocation" formControlName="dropoffLocation" required>
+    <div *ngIf="routeForm.get('dropoffLocation')?.invalid && (routeForm.get('dropoffLocation')?.dirty || routeForm.get('dropoffLocation')?.touched)" class="error">
+      <small *ngIf="routeForm.get('dropoffLocation')?.errors?.['required']">Drop-off location is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="waypoints">Waypoints (optional):</label>
+    <input id="waypoints" formControlName="waypoints">
+  </div>
+
+  <div>
+    <label for="preferences">Preferences (optional):</label>
+    <input id="preferences" formControlName="preferences">
+  </div>
+
+  <button type="submit" [disabled]="routeForm.invalid">Optimize Route</button>
+</form>
+
+<div *ngIf="optimizedRoute">
+  <h2>Optimized Route:</h2>
+  <p>{{ optimizedRoute }}</p>
+</div>
+

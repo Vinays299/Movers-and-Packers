@@ -1,0 +1,18 @@
+<h1> Tracking-Form</h1>
+<form [formGroup]="trackingForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="trackingNumber">Tracking Number:</label>
+      <input id="trackingNumber" formControlName="trackingNumber" />
+      <div *ngIf="trackingForm.get('trackingNumber')?.invalid && trackingForm.get('trackingNumber')?.touched">
+        Tracking number is required.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="trackingForm.invalid">Track Package</button>
+  </form>
+  
+  <div *ngIf="trackingInfo">
+    <h3>Tracking Information:</h3>
+    <p>{{ trackingInfo }}</p>
+  </div>
+  

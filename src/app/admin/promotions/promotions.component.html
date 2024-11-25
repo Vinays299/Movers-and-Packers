@@ -1,0 +1,50 @@
+<h1>Admin Promotion Management</h1>
+<form [formGroup]="promotionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Promotion Title:</label>
+    <input id="title" formControlName="title" required>
+    <div *ngIf="promotionForm.get('title')?.invalid && (promotionForm.get('title')?.dirty || promotionForm.get('title')?.touched)" class="error">
+      <small *ngIf="promotionForm.get('title')?.errors?.['required']">Title is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="discountPercentage">Discount Percentage:</label>
+    <input id="discountPercentage" type="number" formControlName="discountPercentage" required>
+    <div *ngIf="promotionForm.get('discountPercentage')?.invalid && (promotionForm.get('discountPercentage')?.dirty || promotionForm.get('discountPercentage')?.touched)" class="error">
+      <small *ngIf="promotionForm.get('discountPercentage')?.errors?.['required']">Discount percentage is required.</small>
+      <small *ngIf="promotionForm.get('discountPercentage')?.errors?.['min']">Discount must be at least 0.</small>
+      <small *ngIf="promotionForm.get('discountPercentage')?.errors?.['max']">Discount cannot exceed 100.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="startDate">Start Date:</label>
+    <input id="startDate" type="date" formControlName="startDate" required>
+  </div>
+
+  <div>
+    <label for="endDate">End Date:</label>
+    <input id="endDate" type="date" formControlName="endDate" required>
+  </div>
+
+  <div>
+    <label for="status">Promotion Status:</label>
+    <select id="status" formControlName="status" required>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="promotionForm.invalid">Submit Promotion</button>
+</form>
+
+<h2>Promotion List</h2>
+<ul>
+  <li *ngFor="let promotion of promotions">
+    <strong>{{ promotion.title }}</strong> - {{ promotion.discountPercentage }}% <br>
+    <small>Valid From: {{ promotion.startDate | date:'shortDate' }} to {{ promotion.endDate | date:'shortDate' }} | Status: {{ promotion.status }}</small>
+    <button (click)="editPromotion(promotion)">Edit</button>
+    <button *ngIf="promotion.id !== undefined" (click)="deletePromotion(promotion.id)">Delete</button>
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+<h1> Customer Support-Form </h1>
+<form [formGroup]="supportForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <div *ngIf="supportForm.get('name')?.invalid && supportForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="supportForm.get('email')?.invalid && supportForm.get('email')?.touched">
+        Valid email is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="subject">Subject:</label>
+      <input id="subject" formControlName="subject" />
+      <div *ngIf="supportForm.get('subject')?.invalid && supportForm.get('subject')?.touched">
+        Subject is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="message">Message:</label>
+      <textarea id="message" formControlName="message"></textarea>
+      <div *ngIf="supportForm.get('message')?.invalid && supportForm.get('message')?.touched">
+        Message must be at least 10 characters long.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="supportForm.invalid">Submit</button>
+  </form>
+  
+  

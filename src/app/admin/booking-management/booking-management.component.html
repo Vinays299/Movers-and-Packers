@@ -1,0 +1,55 @@
+<h1>Admin Booking Management</h1>
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="customerName">Customer Name:</label>
+    <input id="customerName" formControlName="customerName" required>
+    <div *ngIf="bookingForm.get('customerName')?.invalid && (bookingForm.get('customerName')?.dirty || bookingForm.get('customerName')?.touched)" class="error">
+      <small *ngIf="bookingForm.get('customerName')?.errors?.['required']">Customer name is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="movingDate">Moving Date:</label>
+    <input id="movingDate" type="date" formControlName="movingDate" required>
+    <div *ngIf="bookingForm.get('movingDate')?.invalid && (bookingForm.get('movingDate')?.dirty || bookingForm.get('movingDate')?.touched)" class="error">
+      <small *ngIf="bookingForm.get('movingDate')?.errors?.['required']">Moving date is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="pickupLocation">Pickup Location:</label>
+    <input id="pickupLocation" formControlName="pickupLocation" required>
+    <div *ngIf="bookingForm.get('pickupLocation')?.invalid && (bookingForm.get('pickupLocation')?.dirty || bookingForm.get('pickupLocation')?.touched)" class="error">
+      <small *ngIf="bookingForm.get('pickupLocation')?.errors?.['required']">Pickup location is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="dropoffLocation">Drop-off Location:</label>
+    <input id="dropoffLocation" formControlName="dropoffLocation" required>
+    <div *ngIf="bookingForm.get('dropoffLocation')?.invalid && (bookingForm.get('dropoffLocation')?.dirty || bookingForm.get('dropoffLocation')?.touched)" class="error">
+      <small *ngIf="bookingForm.get('dropoffLocation')?.errors?.['required']">Drop-off location is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="status">Booking Status:</label>
+    <select id="status" formControlName="status" required>
+      <option value="Confirmed">Confirmed</option>
+      <option value="Pending">Pending</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="bookingForm.invalid">Submit Booking</button>
+</form>
+
+<h2>Booking List</h2>
+<ul>
+  <li *ngFor="let booking of bookings">
+    <strong>{{ booking.customerName }}</strong> - {{ booking.movingDate | date:'shortDate' }} <br>
+    <small>Pickup: {{ booking.pickupLocation }} | Drop-off: {{ booking.dropoffLocation }} | Status: {{ booking.status }}</small>
+    <button (click)="editBooking(booking)">Edit</button>
+    <button *ngIf="booking.id !== undefined" (click)="deleteBooking(booking.id)">Delete</button>
+  </li>
+</ul>

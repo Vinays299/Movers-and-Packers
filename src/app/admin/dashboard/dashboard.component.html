@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+  <h1>Admin Dashboard</h1>
+  
+  <div class="cards">
+    <div class="card">
+      <h2>Total Users</h2>
+      <p>{{ totalUsers }}</p>
+    </div>
+    <div class="card">
+      <h2>Total Movers</h2>
+      <p>{{ totalMovers }}</p>
+    </div>
+    <div class="card">
+      <h2>Total Orders</h2>
+      <p>{{ totalOrders }}</p>
+    </div>
+    <div class="card">
+      <h2>Total Revenue</h2>
+      <p>\${{ totalRevenue }}</p>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <button class="attractive-button" routerLink="/users">User Panel</button>
+    <button class="attractive-button" routerLink="/movers">Mover Panel</button>
+</div>
+
+
+  <app-booking-management></app-booking-management>
+</div>

@@ -1,0 +1,53 @@
+
+<h1>Mover Registration</h1>
+<form [formGroup]="moverForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" required>
+    <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)">
+        <small *ngIf="f['name'].errors?.['required']">Name is required.</small>
+    </div>
+    
+
+  <div>
+    <label for="contactNumber">Contact Number:</label>
+    <input id="contactNumber" formControlName="contactNumber" required>
+    <div *ngIf="f['contactNumber'].invalid && (f['contactNumber'].dirty || f['contactNumber'].touched)">
+        <small *ngIf="f['contactNumber'].errors?.['required']">Contact number is required.</small>
+        <small *ngIf="f['contactNumber'].errors?.['pattern']">Invalid contact number.</small>
+    </div>
+    
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" required>
+    <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+        <small *ngIf="f['email'].errors?.['required']">Email is required.</small>
+        <small *ngIf="f['email'].errors?.['email']">Invalid email format.</small>
+    </div>
+    
+  </div>
+
+  <div>
+    <label for="serviceAreas">Service Areas:</label>
+    <input id="serviceAreas" formControlName="serviceAreas" required>
+    <div *ngIf="f['serviceAreas'].invalid && (f['serviceAreas'].dirty || f['serviceAreas'].touched)">
+        <small *ngIf="f['serviceAreas'].errors?.['required']">Service areas are required.</small>
+    </div>
+    
+  </div>
+
+  <div>
+    <label for="experience">Experience (Years):</label>
+    <input id="experience" type="number" formControlName="experience" required>
+    <div *ngIf="f['experience'].invalid && (f['experience'].dirty || f['experience'].touched)">
+        <small *ngIf="f['experience'].errors?.['required']">Experience is required.</small>
+        <small *ngIf="f['experience'].errors?.['min']">Experience cannot be negative.</small>
+    </div>
+    
+  </div>
+
+  <button type="submit" [disabled]="moverForm.invalid">Register</button>
+
+
+

@@ -1,0 +1,46 @@
+<h1>User Panel</h1>
+<nav>
+    <ul>
+        <li><a routerLink="/enquiry" routerLinkActive="active">Enquiry Form</a></li>
+        <li><a routerLink="/register" routerLinkActive="active">Registration Form</a></li>
+        <li><a routerLink="/login" routerLinkActive="active">Login Form</a></li>
+        <li><a routerLink="/moving-requirement" routerLinkActive="active">Moving Requirement</a></li>
+        <li><a routerLink="/quote" routerLinkActive="active">Quote</a></li>
+        <li><a routerLink="/payment" routerLinkActive="active">Payment</a></li>
+        <li><a routerLink="/live-tracking" routerLinkActive="active">Live Tracking</a></li>
+        <li><a routerLink="/reviews" routerLinkActive="active">Reviews & Ratings</a></li>
+        <li><a routerLink="/support" routerLinkActive="active">Customer Support</a></li>
+     </ul>
+</nav>
+
+  <div *ngIf="currentStep === 1">
+    <app-enquiry-form></app-enquiry-form>
+  </div>
+  <div *ngIf="currentStep === 2">
+    <app-registration></app-registration>
+  </div>
+  <div *ngIf="currentStep === 3">
+    <app-login></app-login>
+  </div>
+  <div *ngIf="currentStep === 4">
+    <app-moving-requirement></app-moving-requirement>
+  </div>
+  <div *ngIf="currentStep === 5">
+    <app-quote></app-quote>
+  </div>
+  <div *ngIf="currentStep === 6">
+    <app-payment></app-payment>
+  </div>
+  <div *ngIf="currentStep === 7">
+    <app-live-tracking></app-live-tracking>
+  </div>
+  <div *ngIf="currentStep === 8">
+    <app-rating-reviews></app-rating-reviews>
+  </div>
+  <div *ngIf="currentStep === 9">
+    <app-customersupport></app-customersupport>
+  </div>
+  
+  <button (click)="previousStep()" [disabled]="currentStep === 1">Previous</button>
+  <button (click)="nextStep()" [disabled]="currentStep === steps.length - 1">Next</button>
+  

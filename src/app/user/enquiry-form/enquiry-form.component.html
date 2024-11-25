@@ -1,0 +1,58 @@
+<h1>Enquiry-Form</h1>
+<form [formGroup]="enquiryForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name:</label>
+      <input formControlName="name" />
+      <div *ngIf="enquiryForm.get('name')?.invalid && enquiryForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Email:</label>
+      <input formControlName="email" type="email" />
+      <div *ngIf="enquiryForm.get('email')?.invalid && enquiryForm.get('email')?.touched">
+        Valid email is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Phone:</label>
+      <input formControlName="phone" />
+      <div *ngIf="enquiryForm.get('phone')?.invalid && enquiryForm.get('phone')?.touched">
+        Valid phone number is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Pickup Location:</label>
+      <input formControlName="pickupLocation" />
+      <div *ngIf="enquiryForm.get('pickupLocation')?.invalid && enquiryForm.get('pickupLocation')?.touched">
+        Pickup location is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Drop-off Location:</label>
+      <input formControlName="dropoffLocation" />
+      <div *ngIf="enquiryForm.get('dropoffLocation')?.invalid && enquiryForm.get('dropoffLocation')?.touched">
+        Drop-off location is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Moving Date:</label>
+      <input formControlName="movingDate" type="date" />
+      <div *ngIf="enquiryForm.get('movingDate')?.invalid && enquiryForm.get('movingDate')?.touched">
+        Moving date is required.
+      </div>
+    </div>
+  
+    <div>
+      <label>Message:</label>
+      <textarea formControlName="message"></textarea>
+    </div>
+  
+    <button type="submit" [disabled]="enquiryForm.invalid">Submit Enquiry</button>
+  </form>
+  

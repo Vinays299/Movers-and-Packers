@@ -1,0 +1,45 @@
+<h1>Admin Payment Management</h1>
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="customerName">Customer Name:</label>
+    <input id="customerName" formControlName="customerName" required>
+    <div *ngIf="paymentForm.get('customerName')?.invalid && (paymentForm.get('customerName')?.dirty || paymentForm.get('customerName')?.touched)" class="error">
+      <small *ngIf="paymentForm.get('customerName')?.errors?.['required']">Customer name is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="amount">Amount:</label>
+    <input id="amount" type="number" formControlName="amount" required>
+    <div *ngIf="paymentForm.get('amount')?.invalid && (paymentForm.get('amount')?.dirty || paymentForm.get('amount')?.touched)" class="error">
+      <small *ngIf="paymentForm.get('amount')?.errors?.['required']">Amount is required.</small>
+      <small *ngIf="paymentForm.get('amount')?.errors?.['min']">Amount must be a positive number.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="date">Payment Date:</label>
+    <input id="date" type="date" formControlName="date" required>
+  </div>
+
+  <div>
+    <label for="status">Payment Status:</label>
+    <select id="status" formControlName="status" required>
+      <option value="Completed">Completed</option>
+      <option value="Pending">Pending</option>
+      <option value="Failed">Failed</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="paymentForm.invalid">Add Payment</button>
+</form>
+
+<h2>Payment List</h2>
+<ul>
+  <li *ngFor="let payment of payments">
+    <strong>{{ payment.customerName }}</strong> - ${{ payment.amount }} <br>
+    <small>Date: {{ payment.date | date:'shortDate' }} | Status: {{ payment.status }}</small>
+    <button *ngIf="payment.id !== undefined" (click)="deletePayment(payment.id)">Delete</button>
+  </li>
+</ul>
+

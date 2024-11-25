@@ -1,0 +1,29 @@
+<h1>Booking a Move</h1>
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="date">Moving Date:</label>
+    <input id="date" type="date" formControlName="movingDate" required>
+    <div *ngIf="bookingForm.get('date')?.invalid && bookingForm.get('date')?.touched" class="error">
+      Moving date is required.
+    </div>
+  </div>
+ 
+
+  <div>
+    <label for="pickup">Pickup Location:</label>
+    <input id="pickup" formControlName="pickupLocation" required>
+    <div *ngIf="bookingForm.get('pickup')?.invalid && bookingForm.get('pickup')?.touched" class="error">
+      Pickup location is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="dropoff">Drop-off Location:</label>
+    <input id="dropoff" formControlName="dropoffLocation" required>
+    <div *ngIf="bookingForm.get('dropoff')?.invalid && bookingForm.get('dropoff')?.touched" class="error">
+      Drop-off location is required.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="bookingForm.invalid">Book Move</button>
+</form>

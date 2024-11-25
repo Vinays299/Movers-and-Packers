@@ -1,0 +1,39 @@
+<h1>Mover Earning Tracking</h1>
+<form [formGroup]="earningForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="jobId">Job ID:</label>
+    <input id="jobId" formControlName="jobId" required>
+    <div *ngIf="earningForm.get('jobId')?.invalid && (earningForm.get('jobId')?.dirty || earningForm.get('jobId')?.touched)" class="error">
+      <small *ngIf="earningForm.get('jobId')?.errors?.['required']">Job ID is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="amount">Earning Amount:</label>
+    <input id="amount" type="number" formControlName="amount" required>
+    <div *ngIf="earningForm.get('amount')?.invalid && (earningForm.get('amount')?.dirty || earningForm.get('amount')?.touched)" class="error">
+      <small *ngIf="earningForm.get('amount')?.errors?.['required']">Amount is required.</small>
+      <small *ngIf="earningForm.get('amount')?.errors?.['min']">Amount must be a positive number.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="date">Date:</label>
+    <input id="date" type="date" formControlName="date" required>
+    <div *ngIf="earningForm.get('date')?.invalid && (earningForm.get('date')?.dirty || earningForm.get('date')?.touched)" class="error">
+      <small *ngIf="earningForm.get('date')?.errors?.['required']">Date is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="earningForm.invalid">Add Earning</button>
+</form>
+
+<h2>Total Earnings: {{ totalEarnings | currency }}</h2>
+
+<h3>Earnings List</h3>
+<ul>
+  <li *ngFor="let earning of earnings">
+    Job ID: {{ earning.jobId }} - Amount: {{ earning.amount | currency }} - Date: {{ earning.date | date:'shortDate' }}
+  </li>
+</ul>
+

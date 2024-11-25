@@ -1,0 +1,68 @@
+<h1> Moving-Requirement </h1>
+<form [formGroup]="movingForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" />
+      <div *ngIf="movingForm.get('name')?.invalid && movingForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="movingForm.get('email')?.invalid && movingForm.get('email')?.touched">
+        Valid email is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="phone">Phone:</label>
+      <input id="phone" formControlName="phone" />
+      <div *ngIf="movingForm.get('phone')?.invalid && movingForm.get('phone')?.touched">
+        Valid phone number is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="pickupLocation">Pickup Location:</label>
+      <input id="pickupLocation" formControlName="pickupLocation" />
+      <div *ngIf="movingForm.get('pickupLocation')?.invalid && movingForm.get('pickupLocation')?.touched">
+        Pickup location is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="dropoffLocation">Drop-off Location:</label>
+      <input id="dropoffLocation" formControlName="dropoffLocation" />
+      <div *ngIf="movingForm.get('dropoffLocation')?.invalid && movingForm.get('dropoffLocation')?.touched">
+        Drop-off location is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="movingDate">Moving Date:</label>
+      <input id="movingDate" formControlName="movingDate" type="date" />
+      <div *ngIf="movingForm.get('movingDate')?.invalid && movingForm.get('movingDate')?.touched">
+        Moving date is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="items">Items to Move:</label>
+      <textarea id="items" formControlName="items"></textarea>
+      <div *ngIf="movingForm.get('items')?.invalid && movingForm.get('items')?.touched">
+        Please list items to move.
+      </div>
+    </div>
+  
+    <div>
+      <label for="specialInstructions">Special Instructions:</label>
+      <textarea id="specialInstructions" formControlName="specialInstructions"></textarea>
+    </div>
+  
+    <button type="submit" [disabled]="movingForm.invalid">Submit Requirements</button>
+  </form>
+
+  
+  

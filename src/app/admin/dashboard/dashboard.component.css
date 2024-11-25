@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: 
+        linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), 
+        url('/src/download1.jpg') no-repeat center center/cover; 
+    margin: 0;
+    padding: 50px;
+}
+s
+h1 {
+    text-align: center;
+    color: #d55e1e;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #e89740;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.05); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    color: #0c0c0c;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.card p {
+    font-size: 2em;
+    color: #0a0a0a;
+    margin: 0;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.attractive-button {
+    background: linear-gradient(135deg, #1f0d34, #d75611); 
+    color: white; 
+    border: none; 
+    border-radius: 50px; 
+    padding: 12px 30px; 
+    font-size: 1.1em; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    transition: background 0.4s, transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.attractive-button:hover {
+    background: linear-gradient(135deg, #2575fc, #f24848); 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); 
+}
+
+.attractive-button:focus {
+    outline: none; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .card h2 {
+        font-size: 1.25em;
+    }
+
+    .card p {
+        font-size: 1.5em;
+    }
+}

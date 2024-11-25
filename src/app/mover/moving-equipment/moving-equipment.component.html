@@ -1,0 +1,44 @@
+<h1>Mover Moving Equipment</h1>
+<form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="equipmentType">Equipment Type:</label>
+    <input id="equipmentType" formControlName="equipmentType" required>
+    <div *ngIf="equipmentForm.get('equipmentType')?.invalid && (equipmentForm.get('equipmentType')?.dirty || equipmentForm.get('equipmentType')?.touched)" class="error">
+      <small *ngIf="equipmentForm.get('equipmentType')?.errors?.['required']">Equipment type is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="quantity">Quantity:</label>
+    <input id="quantity" type="number" formControlName="quantity" required>
+    <div *ngIf="equipmentForm.get('quantity')?.invalid && (equipmentForm.get('quantity')?.dirty || equipmentForm.get('quantity')?.touched)" class="error">
+      <small *ngIf="equipmentForm.get('quantity')?.errors?.['required']">Quantity is required.</small>
+      <small *ngIf="equipmentForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="rentalDate">Rental Date:</label>
+    <input id="rentalDate" type="date" formControlName="rentalDate" required>
+    <div *ngIf="equipmentForm.get('rentalDate')?.invalid && (equipmentForm.get('rentalDate')?.dirty || equipmentForm.get('rentalDate')?.touched)" class="error">
+      <small *ngIf="equipmentForm.get('rentalDate')?.errors?.['required']">Rental date is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="returnDate">Return Date (optional):</label>
+    <input id="returnDate" type="date" formControlName="returnDate">
+  </div>
+
+  <button type="submit" [disabled]="equipmentForm.invalid">Add Equipment</button>
+</form>
+
+<h2>Equipment List</h2>
+<ul>
+  <li *ngFor="let equipment of equipmentList">
+    <strong>Type:</strong> {{ equipment.equipmentType }} | 
+    <strong>Quantity:</strong> {{ equipment.quantity }} | 
+    <strong>Rental Date:</strong> {{ equipment.rentalDate | date:'shortDate' }} | 
+    <strong>Return Date:</strong> {{ equipment.returnDate ? (equipment.returnDate | date:'shortDate') : 'N/A' }}
+  </li>
+</ul>

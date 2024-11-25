@@ -1,0 +1,41 @@
+<h1>Mover Review Management</h1>
+<form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="moverName">Mover Name:</label>
+    <input id="moverName" formControlName="moverName" required>
+    <div *ngIf="reviewForm.get('moverName')?.invalid && (reviewForm.get('moverName')?.dirty || reviewForm.get('moverName')?.touched)" class="error">
+      <small *ngIf="reviewForm.get('moverName')?.errors?.['required']">Mover name is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="rating">Rating (1-5):</label>
+    <input id="rating" type="number" formControlName="rating" required>
+    <div *ngIf="reviewForm.get('rating')?.invalid && (reviewForm.get('rating')?.dirty || reviewForm.get('rating')?.touched)" class="error">
+      <small *ngIf="reviewForm.get('rating')?.errors?.['required']">Rating is required.</small>
+      <small *ngIf="reviewForm.get('rating')?.errors?.['min']">Rating must be at least 1.</small>
+      <small *ngIf="reviewForm.get('rating')?.errors?.['max']">Rating cannot exceed 5.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="comment">Comment:</label>
+    <textarea id="comment" formControlName="comment" required></textarea>
+    <div *ngIf="reviewForm.get('comment')?.invalid && (reviewForm.get('comment')?.dirty || reviewForm.get('comment')?.touched)" class="error">
+      <small *ngIf="reviewForm.get('comment')?.errors?.['required']">Comment is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="reviewForm.invalid">Submit Review</button>
+</form>
+
+<h2>Submitted Reviews</h2>
+<ul>
+  <li *ngFor="let review of reviews">
+    <strong>{{ review.moverName }}</strong> (Rating: {{ review.rating }}): <br>
+    "{{ review.comment }}" <br>
+    <small>Date: {{ review.date | date:'shortDate' }}</small>
+    <button *ngIf="review.id !== undefined" (click)="deleteReview(review.id)">Delete</button>
+  </li>
+</ul>
+
